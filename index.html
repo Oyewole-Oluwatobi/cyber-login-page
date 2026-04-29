@@ -292,5 +292,116 @@
 
 </div>
 
+<script>
+  // Storage key
+const USERS_KEY = "users_table";
+
+// Get users table from localStorage (returns array)
+function getUsers() {
+  const data = localStorage.getItem(USERS_KEY);
+  return data ? JSON.parse(data) : [];
+}
+
+// Save users table back to localStorage
+function saveUsers(users) {
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+// Add a new user row to the table
+function registerUser(email, password) {
+  const users = getUsers();
+
+  // Check if email already exists
+  const exists = users.find(function(user) {
+    return user.email === email;
+  });
+
+  if (exists) {
+    alert("An account with this email already exists.");
+    return false;
+  }
+
+  // Create new user row
+  const newUser = {
+    id: Date.now(),
+    email: email,
+    password: password,
+    createdAt: new Date().toLocaleString()
+  };
+
+  users.push(newUser);
+  saveUsers(users);
+  return true;
+}
+
+// Check if a user exists with matching email + password
+function loginUser(email, password) {
+  const users = getUsers();
+
+  const match = users.find(function(user) {
+    return user.email === email && user.password === password;
+  });
+
+  return match || null;
+}
+
+// Print the full users table to the console (so you can see it)
+function printUsersTable() {
+  const users = getUsers();
+  if (users.length === 0) {
+    console.log("No users registered yet.");
+  } else {
+    console.table(users);
+  }
+}
+
+// --- BUTTON LOGIC ---
+
+document.getElementById("login-btn").addEventListener("click", function() {
+  const email    = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  // Basic validation
+  if (!email || !password) {
+    alert("Please enter both email and password.");
+    return;
+  }
+
+  const users = getUsers();
+
+  if (users.length === 0) {
+    // No users yet — register this one as first user
+    const registered = registerUser(email, password);
+    if (registered) {
+      alert("Account created and logged in! Check the console to see your users table.");
+      printUsersTable();
+    }
+    return;
+  }
+
+  // Try to log in
+  const user = loginUser(email, password);
+
+  if (user) {
+    alert("Login successful! Welcome, " + user.email);
+    printUsersTable();
+  } else {
+    // Email exists but wrong password, or new user — register them
+    const emailExists = users.find(function(u) { return u.email === email; });
+
+    if (emailExists) {
+      alert("Wrong password. Please try again.");
+    } else {
+      // New email — register
+      const registered = registerUser(email, password);
+      if (registered) {
+        alert("New account created! Check the console to see your users table.");
+        printUsersTable();
+      }
+    }
+  }
+});
+</script>
+
 </body>
 </html>
