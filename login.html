@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TaskFlow — Sign In</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  /* CARD */
+  .card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* BRAND */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .brand-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: #EEEDFE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .brand-icon svg { display: block; }
+
+  .brand-name {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .brand-sub {
+    font-size: 12px;
+    color: #888;
+  }
+
+  /* HEADING */
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+
+  .sub-text {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 1.75rem;
+  }
+
+  /* FIELDS */
+  .field { margin-bottom: 1rem; }
+
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 6px;
+  }
+
+  .field input {
+    width: 100%;
+    padding: 10px 13px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1a1a1a;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+
+  .field input::placeholder { color: #bbb; }
+
+  .field input:focus {
+    border-color: #534AB7;
+    box-shadow: 0 0 0 3px #EEEDFE;
+  }
+
+  /* REMEMBER + FORGOT */
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .remember {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+  }
+
+  .remember input[type="checkbox"] {
+    accent-color: #534AB7;
+    width: 14px;
+    height: 14px;
+  }
+
+  .forgot {
+    font-size: 12px;
+    color: #534AB7;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .forgot:hover { text-decoration: underline; }
+
+  /* LOGIN BUTTON */
+  .login-btn {
+    width: 100%;
+    padding: 11px;
+    background: #534AB7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    font-family: inherit;
+    margin-bottom: 1.25rem;
+  }
+
+  .login-btn:hover { background: #3C3489; }
+  .login-btn:active { transform: scale(0.98); }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: #eee;
+  }
+
+  .divider-text {
+    font-size: 12px;
+    color: #bbb;
+  }
+
+  /* GOOGLE BUTTON */
+  .google-btn {
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.15s;
+    font-family: inherit;
+  }
+
+  .google-btn:hover { background: #f9f9f9; }
+
+  .g-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #534AB7;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* SIGN UP */
+  .signup-row {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 13px;
+    color: #888;
+  }
+
+  .signup-row a {
+    color: #534AB7;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .signup-row a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- BRAND -->
+  <div class="brand">
+    <div class="brand-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 11l3 3L22 4"/>
+        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+      </svg>
+    </div>
+    <div>
+      <div class="brand-name">TaskFlow</div>
+      <div class="brand-sub">Project Management</div>
+    </div>
+  </div>
+
+  <!-- HEADING -->
+  <h1>Welcome back</h1>
+  <p class="sub-text">Sign in to your account to continue</p>
+
+  <!-- EMAIL -->
+  <div class="field">
+    <label for="email">Email address</label>
+    <input type="email" id="email" placeholder="you@example.com"/>
+  </div>
+
+  <!-- PASSWORD -->
+  <div class="field">
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter your password"/>
+  </div>
+
+  <!-- REMEMBER + FORGOT -->
+  <div class="row">
+    <label class="remember">
+      <input type="checkbox" id="remember"/>
+      Remember me
+    </label>
+    <a class="forgot" href="#">Forgot password?</a>
+  </div>
+
+  <!-- SIGN IN BUTTON -->
+  <button class="login-btn" id="login-btn">Sign in</button>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-text">or</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- GOOGLE BUTTON -->
+  <button class="google-btn" id="google-btn">
+    <div class="g-icon">G</div>
+    Continue with Google
+  </button>
+
+  <!-- SIGN UP LINK -->
+  <div class="signup-row">
+    Don't have an account? <a href="#">Sign up free</a>
+  </div>
+
+</div>
+
+</body>
+</html>
