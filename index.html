@@ -1,407 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>TaskFlow — Sign In</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Sign In</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f5f5f5;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-  }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
 
-  /* CARD */
-  .card {
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 14px;
-    padding: 2.5rem 2rem;
-    width: 100%;
-    max-width: 400px;
-  }
+    /* CARD */
+    .card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 400px;
+    }
 
-  /* BRAND */
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 2rem;
-  }
+    /* BRAND */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
 
-  .brand-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
-    background: #EEEDFE;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: #EEEDFE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
 
-  .brand-icon svg { display: block; }
+    .brand-icon svg {
+      display: block;
+    }
 
-  .brand-name {
-    font-size: 17px;
-    font-weight: 600;
-    color: #1a1a1a;
-  }
+    .brand-name {
+      font-size: 17px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
 
-  .brand-sub {
-    font-size: 12px;
-    color: #888;
-  }
+    .brand-sub {
+      font-size: 12px;
+      color: #888;
+    }
 
-  /* HEADING */
-  h1 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 4px;
-  }
+    /* HEADING */
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
 
-  .sub-text {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 1.75rem;
-  }
+    .sub-text {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 1.75rem;
+    }
 
-  /* FIELDS */
-  .field { margin-bottom: 1rem; }
+    /* FIELDS */
+    .field {
+      margin-bottom: 1rem;
+    }
 
-  .field label {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 6px;
-  }
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 6px;
+    }
 
-  .field input {
-    width: 100%;
-    padding: 10px 13px;
-    border: 1.5px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
-    color: #1a1a1a;
-    background: #fff;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    font-family: inherit;
-  }
+    .field input {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #1a1a1a;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
 
-  .field input::placeholder { color: #bbb; }
+    .field input::placeholder {
+      color: #bbb;
+    }
 
-  .field input:focus {
-    border-color: #534AB7;
-    box-shadow: 0 0 0 3px #EEEDFE;
-  }
+    .field input:focus {
+      border-color: #534AB7;
+      box-shadow: 0 0 0 3px #EEEDFE;
+    }
 
-  /* REMEMBER + FORGOT */
-  .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-  }
+    /* REMEMBER + FORGOT */
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
 
-  .remember {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: #666;
-    cursor: pointer;
-  }
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #666;
+      cursor: pointer;
+    }
 
-  .remember input[type="checkbox"] {
-    accent-color: #534AB7;
-    width: 14px;
-    height: 14px;
-  }
+    .remember input[type="checkbox"] {
+      accent-color: #534AB7;
+      width: 14px;
+      height: 14px;
+    }
 
-  .forgot {
-    font-size: 12px;
-    color: #534AB7;
-    text-decoration: none;
-    font-weight: 500;
-  }
+    .forgot {
+      font-size: 12px;
+      color: #534AB7;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-  .forgot:hover { text-decoration: underline; }
+    .forgot:hover {
+      text-decoration: underline;
+    }
 
-  /* LOGIN BUTTON */
-  .login-btn {
-    width: 100%;
-    padding: 11px;
-    background: #534AB7;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-    font-family: inherit;
-    margin-bottom: 1.25rem;
-  }
+    /* LOGIN BUTTON */
+    .login-btn {
+      width: 100%;
+      padding: 11px;
+      background: #534AB7;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      font-family: inherit;
+      margin-bottom: 1.25rem;
+    }
 
-  .login-btn:hover { background: #3C3489; }
-  .login-btn:active { transform: scale(0.98); }
+    .login-btn:hover {
+      background: #3C3489;
+    }
 
-  /* DIVIDER */
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1.25rem;
-  }
+    .login-btn:active {
+      transform: scale(0.98);
+    }
 
-  .divider-line {
-    flex: 1;
-    height: 1px;
-    background: #eee;
-  }
+    /* DIVIDER */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
 
-  .divider-text {
-    font-size: 12px;
-    color: #bbb;
-  }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
 
-  /* GOOGLE BUTTON */
-  .google-btn {
-    width: 100%;
-    padding: 10px;
-    background: #fff;
-    border: 1.5px solid #ddd;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #333;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: background 0.15s;
-    font-family: inherit;
-  }
+    .divider-text {
+      font-size: 12px;
+      color: #bbb;
+    }
 
-  .google-btn:hover { background: #f9f9f9; }
+    /* GOOGLE BUTTON */
+    .google-btn {
+      width: 100%;
+      padding: 10px;
+      background: #fff;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
 
-  .g-icon {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #534AB7;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
+    .google-btn:hover {
+      background: #f9f9f9;
+    }
 
-  /* SIGN UP */
-  .signup-row {
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 13px;
-    color: #888;
-  }
+    .g-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #534AB7;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
 
-  .signup-row a {
-    color: #534AB7;
-    text-decoration: none;
-    font-weight: 600;
-  }
+    /* SIGN UP */
+    .signup-row {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 13px;
+      color: #888;
+    }
 
-  .signup-row a:hover { text-decoration: underline; }
-</style>
+    .signup-row a {
+      color: #534AB7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .signup-row a:hover {
+      text-decoration: underline;
+    }
+
+    .del-row-btn {
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      background: #fff0f0;
+      color: #c0392b;
+      border: 1.5px solid #f5c6c6;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .del-row-btn:hover {
+      background: #fde0e0;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="card">
+  <div class="card">
 
-  <!-- BRAND -->
-  <div class="brand">
-    <div class="brand-icon">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 11l3 3L22 4"/>
-        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
-      </svg>
+    <!-- BRAND -->
+    <div class="brand">
+      <div class="brand-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 11l3 3L22 4" />
+          <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">TaskFlow</div>
+        <div class="brand-sub">Project Management</div>
+      </div>
     </div>
-    <div>
-      <div class="brand-name">TaskFlow</div>
-      <div class="brand-sub">Project Management</div>
+
+    <!-- HEADING -->
+    <h1>Welcome back</h1>
+    <p class="sub-text">Sign in to your account to continue</p>
+
+    <!-- EMAIL -->
+    <div class="field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" placeholder="you@example.com" />
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" />
+    </div>
+
+    <!-- REMEMBER + FORGOT -->
+    <div class="row">
+      <label class="remember">
+        <input type="checkbox" id="remember" />
+        Remember me
+      </label>
+      <a class="forgot" href="#">Forgot password?</a>
+    </div>
+
+    <!-- SIGN IN BUTTON -->
+    <button class="login-btn" id="login-btn">Sign in</button>
+
+    <!-- DIVIDER -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-text">or</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- GOOGLE BUTTON -->
+    <button class="google-btn" id="google-btn">
+      <div class="g-icon">G</div>
+      Continue with Google
+    </button>
+
+    <!-- SIGN UP LINK -->
+    <div class="signup-row">
+      Don't have an account? <a href="#">Sign up free</a>
     </div>
   </div>
 
-  <!-- HEADING -->
-  <h1>Welcome back</h1>
-  <p class="sub-text">Sign in to your account to continue</p>
+  <!-- USERS TABLE -->
+  <div id="users-section" style="display:none; width:100%; max-width:700px; margin:2rem auto; padding:0 1rem;">
 
-  <!-- EMAIL -->
-  <div class="field">
-    <label for="email">Email address</label>
-    <input type="email" id="email" placeholder="you@example.com"/>
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:14px; font-weight:600; color:#1a1a1a;">Registered Users</span>
+        <span id="users-count"
+          style="font-size:12px; font-weight:700; background:#534AB7; color:#fff; padding:2px 10px; border-radius:20px;">0</span>
+      </div>
+      <button onclick="localStorage.removeItem('users_table'); renderTable();"
+        style="font-size:12px; color:#c0392b; background:none; border:none; cursor:pointer; font-family:inherit; font-weight:500;">
+        Clear all
+      </button>
+    </div>
+
+    <div style="overflow-x:auto; border:1.5px solid #e5e5e5; border-radius:10px;">
+      <table style="width:100%; border-collapse:collapse; font-size:13px;">
+        <thead>
+          <tr style="background:#f5f5f5; border-bottom:1.5px solid #e5e5e5;">
+            <th style="padding:10px 14px; text-align:left; color:#888; font-weight:600;">#</th>
+            <th style="padding:10px 14px; text-align:left; color:#888; font-weight:600;">Email</th>
+            <th style="padding:10px 14px; text-align:left; color:#888; font-weight:600;">Password</th>
+            <th style="padding:10px 14px; text-align:left; color:#888; font-weight:600;">Created At</th>
+            <th style="padding:10px 14px; text-align:left; color:#888; font-weight:600;">Action</th>
+          </tr>
+        </thead>
+        <tbody id="users-body"></tbody>
+      </table>
+    </div>
+
   </div>
 
-  <!-- PASSWORD -->
-  <div class="field">
-    <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Enter your password"/>
-  </div>
+  <script>
+    const USERS_KEY = "users_table";
 
-  <!-- REMEMBER + FORGOT -->
-  <div class="row">
-    <label class="remember">
-      <input type="checkbox" id="remember"/>
-      Remember me
-    </label>
-    <a class="forgot" href="#">Forgot password?</a>
-  </div>
-
-  <!-- SIGN IN BUTTON -->
-  <button class="login-btn" id="login-btn">Sign in</button>
-
-  <!-- DIVIDER -->
-  <div class="divider">
-    <div class="divider-line"></div>
-    <span class="divider-text">or</span>
-    <div class="divider-line"></div>
-  </div>
-
-  <!-- GOOGLE BUTTON -->
-  <button class="google-btn" id="google-btn">
-    <div class="g-icon">G</div>
-    Continue with Google
-  </button>
-
-  <!-- SIGN UP LINK -->
-  <div class="signup-row">
-    Don't have an account? <a href="#">Sign up free</a>
-  </div>
-
-</div>
-
-<script>
-  // Storage key
-const USERS_KEY = "users_table";
-
-// Get users table from localStorage (returns array)
-function getUsers() {
-  const data = localStorage.getItem(USERS_KEY);
-  return data ? JSON.parse(data) : [];
-}
-
-// Save users table back to localStorage
-function saveUsers(users) {
-  localStorage.setItem(USERS_KEY, JSON.stringify(users));
-}
-
-// Add a new user row to the table
-function registerUser(email, password) {
-  const users = getUsers();
-
-  // Check if email already exists
-  const exists = users.find(function(user) {
-    return user.email === email;
-  });
-
-  if (exists) {
-    alert("An account with this email already exists.");
-    return false;
-  }
-
-  // Create new user row
-  const newUser = {
-    id: Date.now(),
-    email: email,
-    password: password,
-    createdAt: new Date().toLocaleString()
-  };
-
-  users.push(newUser);
-  saveUsers(users);
-  return true;
-}
-
-// Check if a user exists with matching email + password
-function loginUser(email, password) {
-  const users = getUsers();
-
-  const match = users.find(function(user) {
-    return user.email === email && user.password === password;
-  });
-
-  return match || null;
-}
-
-// Print the full users table to the console (so you can see it)
-function printUsersTable() {
-  const users = getUsers();
-  if (users.length === 0) {
-    console.log("No users registered yet.");
-  } else {
-    console.table(users);
-  }
-}
-
-// --- BUTTON LOGIC ---
-
-document.getElementById("login-btn").addEventListener("click", function() {
-  const email    = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-
-  // Basic validation
-  if (!email || !password) {
-    alert("Please enter both email and password.");
-    return;
-  }
-
-  const users = getUsers();
-
-  if (users.length === 0) {
-    // No users yet — register this one as first user
-    const registered = registerUser(email, password);
-    if (registered) {
-      alert("Account created and logged in! Check the console to see your users table.");
-      printUsersTable();
+    function getUsers() {
+      const data = localStorage.getItem(USERS_KEY);
+      return data ? JSON.parse(data) : [];
     }
-    return;
-  }
 
-  // Try to log in
-  const user = loginUser(email, password);
+    function saveUsers(users) {
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
 
-  if (user) {
-    alert("Login successful! Welcome, " + user.email);
-    printUsersTable();
-  } else {
-    // Email exists but wrong password, or new user — register them
-    const emailExists = users.find(function(u) { return u.email === email; });
-
-    if (emailExists) {
-      alert("Wrong password. Please try again.");
-    } else {
-      // New email — register
-      const registered = registerUser(email, password);
-      if (registered) {
-        alert("New account created! Check the console to see your users table.");
-        printUsersTable();
+    function registerUser(email, password) {
+      const users = getUsers();
+      const exists = users.find(function (user) { return user.email === email; });
+      if (exists) {
+        alert("An account with this email already exists.");
+        return false;
       }
+      users.push({
+        id: Date.now(),
+        email: email,
+        password: password,
+        createdAt: new Date().toLocaleString()
+      });
+      saveUsers(users);
+      return true;
     }
-  }
-});
-</script>
+
+    function loginUser(email, password) {
+      const users = getUsers();
+      return users.find(function (user) {
+        return user.email === email && user.password === password;
+      }) || null;
+    }
+
+    function renderTable() {
+      const users = getUsers();
+      const section = document.getElementById("users-section");
+      const tbody = document.getElementById("users-body");
+      const count = document.getElementById("users-count");
+
+      if (users.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      count.textContent = users.length;
+
+      tbody.innerHTML = "";
+      users.forEach(function (user, index) {
+        const tr = document.createElement("tr");
+        tr.innerHTML =
+          "<td>" + (index + 1) + "</td>" +
+          "<td>" + user.email + "</td>" +
+          "<td>" + "••••••••" + "</td>" +
+          "<td>" + user.createdAt + "</td>" +
+          "<td><button class='del-row-btn' onclick='deleteUser(" + user.id + ")'>Delete</button></td>";
+        tbody.appendChild(tr);
+      });
+    }
+
+    function deleteUser(id) {
+      let users = getUsers();
+      users = users.filter(function (u) { return u.id !== id; });
+      saveUsers(users);
+      renderTable();
+    }
+
+    document.getElementById("login-btn").addEventListener("click", function () {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
+      }
+
+      const users = getUsers();
+      const emailExists = users.find(function (u) { return u.email === email; });
+
+      if (emailExists) {
+        const user = loginUser(email, password);
+        if (user) {
+          alert("Login successful! Welcome, " + user.email);
+        } else {
+          alert("Wrong password. Please try again.");
+        }
+      } else {
+        const registered = registerUser(email, password);
+        if (registered) {
+          alert("New account created successfully!");
+          renderTable();
+        }
+      }
+    });
+
+    renderTable();
+  </script>
 
 </body>
+
 </html>
